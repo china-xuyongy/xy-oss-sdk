@@ -6,10 +6,10 @@
 
 ```php
 
-use xuyong\oss\Manager;
+    use xuyong\oss\Manager;
 
     $cloud = Manager::storage('云存储厂商');    //阿里云：aliyun、腾讯云：tencent、七牛云：qiniu
-    $storage = $cloud->upload('文件本地临时路径','初始化配置');
+    $storage = $cloud->upload('文件临时路径','初始化配置');
     $config = [
         //阿里云是AccessKey，七牛云是AK
         'AppId'=>'', 

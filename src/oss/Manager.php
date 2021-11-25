@@ -9,7 +9,7 @@ use xuyong\oss\Storage\tencent\Tencent;
 
 class Manager
 {
-    public function storage($type)
+    public static function storage($type)
     {
         $storage = null;
         switch ($type){

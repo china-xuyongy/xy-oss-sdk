@@ -8,7 +8,7 @@ use xuyong\oss\Storage\UploadStorage;
 
 class Tencent implements UploadStorage
 {
-    public function upload($pathName)
+    public function upload($pathName,array $config)
     {
         // TODO: Implement upload() method.
     }

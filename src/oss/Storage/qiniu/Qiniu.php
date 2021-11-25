@@ -10,13 +10,13 @@ use xuyong\oss\Storage\UploadStorage;
 
 class Qiniu implements UploadStorage
 {
-    public function upload($pathName)
+    public function upload($pathName,array $config)
     {
         // TODO: Implement upload() method.
         // 需要填写你的 Access Key 和 Secret Key
-        $accessKey ="your accessKey";
-        $secretKey = "your secretKey";
-        $bucket = "your bucket name";
+        $accessKey = $config['AppId'];
+        $secretKey = $config['AppKey'];
+        $bucket = $config['bucket'];
         // 构建鉴权对象
         $auth = new Auth($accessKey, $secretKey);
         // 生成上传 Token
@@ -29,11 +29,10 @@ class Qiniu implements UploadStorage
         $uploadMgr = new UploadManager();
         // 调用 UploadManager 的 putFile 方法进行文件的上传。
         list($ret, $err) = $uploadMgr->putFile($token, $key, $filePath);
-        echo "\n====> putFile result: \n";
         if ($err !== null) {
-        var_dump($err);
+        return $err;
         } else {
-        var_dump($ret);
+        return $ret;
         }
     }
 }

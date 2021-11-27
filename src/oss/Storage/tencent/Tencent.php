@@ -32,6 +32,6 @@ class Tencent implements UploadStorage
             'ContentType' => 'image/jpg,image/png,image/jpeg,image/tmp'
         ));
         // 查看结果
-        return 'http://'.$result->Location;
+        return $result;
     }
 }

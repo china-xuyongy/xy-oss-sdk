@@ -17,6 +17,7 @@ class Qiniu implements UploadStorage
         $accessKey = $config['AppId'];
         $secretKey = $config['AppKey'];
         $bucket = $config['bucket'];
+        $extension = $config['extension']??'jpg';     // 获取文件后缀名
         // 构建鉴权对象
         $auth = new Auth($accessKey, $secretKey);
         // 生成上传 Token
@@ -24,7 +25,7 @@ class Qiniu implements UploadStorage
         // 要上传文件的本地路径
         $filePath = $pathName;
         // 上传到存储后保存的文件名
-        $key = md5(time().$pathName).'.jpg';
+        $key = md5(time() . $pathName . rand(11111, 999999)).".$extension";
         // 初始化 UploadManager 对象并进行文件的上传。
         $uploadMgr = new UploadManager();
         // 调用 UploadManager 的 putFile 方法进行文件的上传。
@@ -32,7 +33,7 @@ class Qiniu implements UploadStorage
         if ($err !== null) {
         return $err;
         } else {
-        return $ret;
+        return $ret['key'];
         }
     }
 }

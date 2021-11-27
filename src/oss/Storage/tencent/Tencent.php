@@ -22,7 +22,8 @@ class Tencent implements UploadStorage
             )
         ));
         // 重新命名文件
-        $newName = uniqid().time().strrchr($pathName, '.');
+        $extension = $config['extension']??'jpg';
+        $newName = uniqid().time().".$extension";
         // 上传资源
         $result = $cosClient->putObject(array(
             'Bucket' => $config['bucket'], // 你的 bucket 名称

@@ -23,7 +23,7 @@
         'extension'=>''
     ];
     $cloud = Manager::storage('云存储厂商');    //阿里云：aliyun、腾讯云：tencent、七牛云：qiniu
-    $storage = $cloud->upload('文件临时路径',$config);
+    $storage = $cloud->upload('文件临时路径',$config);;
     
 
 
